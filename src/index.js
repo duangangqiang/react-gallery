@@ -1,7 +1,7 @@
 import 'core-js/fn/object/assign';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/Main';
+import GalleryByReactApp from './components/GalleryByReactComponent';
 
-// Render the main component into the dom
-ReactDOM.render(<App />, document.getElementById('app'));
+// 插入到dom中
+ReactDOM.render(<GalleryByReactApp />, document.getElementById('app'));
