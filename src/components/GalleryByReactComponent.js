@@ -25,6 +25,14 @@ let getRangeRandom = function (low, high) {
 	return Math.ceil(Math.random() * (high - low) + low);
 };
 
+
+/**
+*	获取0~30之间的任意正负值
+*/
+let get30DegRandom = function () {
+	return (Math.random() > 0.5 ? '' : '-') + Math.ceil(Math.random() * 30);
+}
+
 class GalleryByReactComponent extends React.Component {
 
 	/**
@@ -59,49 +67,58 @@ class GalleryByReactComponent extends React.Component {
 
 			imgsArrangeCenterArr = imgsArrangeArr.splice(centerIndex, 1);
 
-			// 首先居中, centerIndex图片
-			imgsArrangeCenterArr[0].pos = centerPos;
+		// 首先居中, centerIndex图片
+		imgsArrangeCenterArr[0].pos = centerPos;
 
-			// 取出要布局在上侧的图片状态信息
-			topImgSpliceIndex = Math.ceil(Math.random() * (imgsArrangeArr.length - topImgNum));
-			imgsArrangeTopArr = imgsArrangeArr.splice(topImgSpliceIndex, topImgNum);
+		// 居中的图片不需要旋转
+		imgsArrangeCenterArr[0].rotate = 0;
 
-			// 布局位于上侧的图片
-			imgsArrangeTopArr.forEach(function(value, index) {
-				imgsArrangeTopArr[index].pos = {
+		// 取出要布局在上侧的图片状态信息
+		topImgSpliceIndex = Math.ceil(Math.random() * (imgsArrangeArr.length - topImgNum));
+		imgsArrangeTopArr = imgsArrangeArr.splice(topImgSpliceIndex, topImgNum);
+
+		// 布局位于上侧的图片
+		imgsArrangeTopArr.forEach(function(value, index) {
+			imgsArrangeTopArr[index] = {
+				pos: {
 					top: getRangeRandom(vPosRangeTopY[0], vPosRangeTopY[1]),
 					left: getRangeRandom(vPosRangeX[0], vPosRangeX[1])
-				}
-			});
+				},
+				rotate: get30DegRandom()
+			}
+		});
 
-			// 布局左右两侧的图片
-			for(let i = 0, j = imgsArrangeArr.length, k = j /2; i < j; i++) {
+		// 布局左右两侧的图片
+		for(let i = 0, j = imgsArrangeArr.length, k = j /2; i < j; i++) {
 
-				let hPosRangeLOrR = null;
+			let hPosRangeLOrR = null;
 
-				// 前半部分布局左边,右半部分布局右边
-				if (i < k) {
-					hPosRangeLOrR = hPosRangeLeftSecX;
-				} else {
-					hPosRangeLOrR = hPosRangeRightSecX;
-				}
+			// 前半部分布局左边,右半部分布局右边
+			if (i < k) {
+				hPosRangeLOrR = hPosRangeLeftSecX;
+			} else {
+				hPosRangeLOrR = hPosRangeRightSecX;
+			}
 
-				imgsArrangeArr[i].pos = {
+			imgsArrangeArr[i] = {
+				pos : {
 					top: getRangeRandom(hPosRangeY[0], hPosRangeY[1]),
 					left: getRangeRandom(hPosRangeLOrR[0], hPosRangeLOrR[1])
-				}
+				},
+				rotate: get30DegRandom()
 			}
+		}
 
-			
-			if (imgsArrangeTopArr && imgsArrangeTopArr[0]) {
-				imgsArrangeArr.splice(topImgSpliceIndex, 0, imgsArrangeTopArr[0]);
-			}
+		
+		if (imgsArrangeTopArr && imgsArrangeTopArr[0]) {
+			imgsArrangeArr.splice(topImgSpliceIndex, 0, imgsArrangeTopArr[0]);
+		}
 
-			imgsArrangeArr.splice(centerIndex, 0, imgsArrangeCenterArr[0]);
+		imgsArrangeArr.splice(centerIndex, 0, imgsArrangeCenterArr[0]);
 
-			this.setState({
-				imgsArrangeArr: imgsArrangeArr
-			});
+		this.setState({
+			imgsArrangeArr: imgsArrangeArr
+		});
 
 	}
 
@@ -176,7 +193,8 @@ class GalleryByReactComponent extends React.Component {
 	  				pos: {
 	  					left: 0,
 	  					top: 0
-	  				}
+	  				},
+	  				rotate: 0
 	  			}
 	  		}
 
