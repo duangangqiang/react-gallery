@@ -13,6 +13,7 @@
     "release:minor": "npm version minor && npm publish && git push --follow-tags",
     "release:patch": "npm version patch && npm publish && git push --follow-tags",
     "publish": "git subtree push --prefix=dist origin gh-pages",
+    "cbrDist":"npm run clean && npm run dist && npm run serve:dist",
     "serve": "node server.js --env=dev",
     "serve:dist": "node server.js --env=dist",
     "start": "node server.js --env=dev",

@@ -17,6 +17,9 @@ imageDatas = (function(imageDatasArr) {
 
 		// 使用require来得到图片地址
 		singleImageData.imageUrl = require('../images/' + singleImageData.fileName);
+
+		singleImageData.imageUrl = singleImageData.imageUrl.substr(1);
+
 		imageDatasArr[i] = singleImageData;
 	}
 	return imageDatasArr;
