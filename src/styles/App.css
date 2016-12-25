@@ -10,41 +10,8 @@ html,body {
   width: 100%;
 }
 
-
-
 .stage {
   position: relative;
   width: 100%;
-  height: 90%;
-}
-
-
-
-.image-sec {
-  position: relative;
   height: 100%;
-  width: 100%;
-  overflow: hidden;
-  background-color: #ddd;
-  perspective: 1800px;
-}
-
-
-
-.controller-sec {
-  position: absolute;
-  left: 0;
-  bottom: 30px;
-  z-index: 101;
-  width: 100%;
-  text-align: center;
-}
-
-.controller-nav {
-  position: absolute;
-  left: 0;
-  bottom: 30px;
-  z-index: 101;
-  width: 100%;
-  text-align: center;
 }

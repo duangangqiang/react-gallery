@@ -3,6 +3,7 @@ require('styles/App.css');
 
 import React from 'react';
 import ImageFigure from './ImageFigureComponent.js';
+import ControllerUnit from './ControllerUnitComponent.js';
 import ReactDOM from 'react-dom';
 
 // 获取图片数据
@@ -42,7 +43,7 @@ class GalleryByReactComponent extends React.Component {
 		super(props);
 		this.state = {
 			imgsArrangeArr: [
-				// { 
+				// {
 				// 	pos: {
 				// 		left: '0',
 				// 		top: '0'
@@ -89,7 +90,7 @@ class GalleryByReactComponent extends React.Component {
 			vPosRangeX = vPosRange.x,
 
 			imgsArrangeTopArr = [],
-			topImgNum = Math.ceil(Math.random() * 2), // 取一个或者不取
+			topImgNum = Math.floor(Math.random() * 2), // 取一个或者不取
 			topImgSpliceIndex = 0,
 
 			imgsArrangeCenterArr = imgsArrangeArr.splice(centerIndex, 1);
@@ -230,6 +231,7 @@ class GalleryByReactComponent extends React.Component {
 	  	// 将所有的图片添加进来 bind(this) 是把GalleryByReactComponent对象传递进来
 	  	imageDatas.forEach(function(imageData, index) {
 
+	  		// 初始化组件参数
 	  		if (!this.state.imgsArrangeArr[index]) {
 	  			this.state.imgsArrangeArr[index] = {
 	  				pos: {
@@ -242,9 +244,15 @@ class GalleryByReactComponent extends React.Component {
 	  			}
 	  		}
 
-	  		imageFigures.push(<ImageFigure data={imageData} key={'imageFigureKey' + index}
+	  		// 增加图片
+	  		imageFigures.push(<ImageFigure data={imageData} key={ index}
 	  			ref= {'imageFigure' + index} arrange={this.state.imgsArrangeArr[index]}
-	  			inverse={this.inverse(index)} center={this.center(index)} />)
+	  			inverse={this.inverse(index)} center={this.center(index)} />);
+
+	  		// 增加控制器
+	  		controllerUnits.push(<ControllerUnit key={index}
+	  			arrange={this.state.imgsArrangeArr[index]}
+	  			inverse={this.inverse(index)} center={this.center(index)} />);
 	  	}.bind(this));
 
 	    return (

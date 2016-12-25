@@ -7,7 +7,7 @@ class ImageFigureComponent extends React.Component {
 	constructor(props) {
 	    super(props);
 
-	    // This binding is necessary to make `this` work in the callback
+	    // 绑定this
 	    this.handleClick = this.handleClick.bind(this);
 	 }
 

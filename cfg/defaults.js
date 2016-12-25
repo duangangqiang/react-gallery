@@ -1,4 +1,4 @@
-/**
+ /**
  * Function that returns default values.
  * Used because Object.assign does a shallow instead of a deep copy.
  * Using [].push will add to the base array, so a require will alter
@@ -49,7 +49,7 @@ function getDefaultModules() {
         loader: 'style-loader!css-loader!stylus-loader'
       },
       {
-        test: /\.(png|jpg|gif|woff|woff2)$/,
+        test: /\.(png|jpg|gif|woff|woff2|eot|ttf|svg)$/,
         loader: 'url-loader?limit=8192'
       },
       {

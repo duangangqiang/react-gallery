@@ -1,6 +1,15 @@
+.image-sec {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: #ddd;
+  perspective: 1800px;
+}
+
 .img-figure {
-    width: 320px;
-    height: 220px;
+    width: 400px;
+    height: 250px;
     margin: 0;
     padding: 30px;
     text-align: center;
@@ -15,11 +24,11 @@
 }
 
 .img-figure.is-inverse{
-    transform: translate(320px) rotateY(180deg);
+    transform: translate(400px) rotateY(180deg);
 }
 
 .img-figure img {
-	width: 280px;
+	width: 350px;
 }
 
 .img-back {
