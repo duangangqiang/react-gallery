@@ -2,13 +2,49 @@
     width: 320px;
     height: 220px;
     margin: 0;
-    padding: 40px;
+    padding: 30px;
     text-align: center;
     position: absolute;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    box-shadow: 2px 5px 5px #d1d1d1;
+    cursor: pointer;
+    transform-style: preserve-3d;
+}
+
+.img-figure.is-inverse{
+    transform: rotateY(180deg);
 }
 
 .img-figure img {
 	width: 280px;
+}
+
+.img-back {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    height: 100%;
+    width: 100%;
+    padding: 30px;
+    overflow: auto;
+    
+    color: #a7a0a2;
+    font-size: 22px;
+    line-height: 1.25;
+    text-align: left;
+
+    background-color: #fff;
+
+    box-sizing: border-box;
+
+    transform: rotateY(180deg);
+    backface-visibility: hidden; 
+}
+
+.img-back p {
+    margin: 0;
 }
 
 figcaption{
